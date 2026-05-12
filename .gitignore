@@ -17,3 +17,11 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Temporary test files
+check_import_status.php
+fix_export_status.php
+reset_stuck_imports.php
+test_rate_limit.php
+test_rate_limit_fast.php
+rate_limit_test_output.txt
