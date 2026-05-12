@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('orders', function (Blueprint $table) {
+            // Nullable to support existing orders created before this feature existed.
+            // New orders are still required to provide these fields via validation.
+            $table->string('contact_number')->nullable()->after('status');
+            $table->text('shipping_address')->nullable()->after('contact_number');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn(['contact_number', 'shipping_address']);
+        });
+    }
+};
+
